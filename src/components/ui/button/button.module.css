@@ -1,0 +1,25 @@
+.primary {
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    background: var(--primary2-color);
+    color: white;
+}
+
+.primary:hover {
+    background: var(--second2-color);
+}
+
+.second {
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    background: #3b3b3b;
+    color: white;
+}
+
+.second:hover {
+    background: #474747;
+}

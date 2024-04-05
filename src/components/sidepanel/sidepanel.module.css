@@ -1,0 +1,32 @@
+.menuItem {
+    padding-top: 5px;
+    transition: 0.2s all;
+    margin-top: 10px;
+}
+
+.menuItem:hover {
+ background-color: hsla(210, 8%, 15%, 0.808);
+ border-radius: 8px;
+}
+
+.active {
+    transition: 0.5s all;
+    background-color: var(--primary-color);
+    border-radius: 50% 50% 0% 0%;
+}
+
+.sideBottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+.sideBottom li:hover {
+    background: none;
+}
+
+.profilePic {
+    border-radius: 50%;
+    width: 100%;
+}
+
