@@ -5,6 +5,7 @@ import styles from './sidepanel.module.css'
 import { useState } from 'react'
 import Modal from '@/components/modal/Modal'
 import Division from '../ui/division/Division'
+import Switch from '../ui/switch/Swtich'
 
 const MenuList = styled.ul`
 list-style: none;
@@ -87,6 +88,12 @@ text-align: center;
     }
 `
 
+const ModalSectionName = styled.h4`
+margin-left: 15px;
+user-select: none;
+color: var(--second-color);
+`
+
 export default function SidePanel() {
 
     const [openModal, setOpenModal] = useState(false)
@@ -115,13 +122,13 @@ export default function SidePanel() {
                 
                     <ModalUserButtonsBox>
                         <li onClick={() => {setModal("userMyAccount")}}><Icon name='account_circle' /> <span>My Account</span></li>
-                        <li><Icon name='contrast' /> <span>Appearance</span></li>
+                        {/* <li><Icon name='contrast' /> <span>Appearance</span></li> */}
                     </ModalUserButtonsBox>
 
                     <Division style={{position: "absolute", width: "100%", right: "0", marginTop: "30px"}} variant='second' />
                 
                     <ModalUserButtonsBox>
-                        <li><Icon name='settings' /> <span>Settings</span></li>
+                        <li onClick={() => {setModal("userSettings")}}><Icon name='settings' /> <span>Settings</span></li>
                     </ModalUserButtonsBox>
 
                     <ModalUserButtonsBox style={{ position: "absolute", bottom: "0", right: "0", left: "0" }}>
@@ -133,30 +140,59 @@ export default function SidePanel() {
 
             {/* MY ACCOUNT MODAL */}
             {modal == "userMyAccount" && (
-                <Modal open={openModal}>
-                    <Icon name='west' onClick={() => {setModal("userProfile")}} size={32} style={{padding: "15px", cursor: "pointer", right: "50px", top: "0", margin: "unset", position: "fixed"}} />
-                    <Icon name='close' onClick={() => {setOpenModal(!openModal); setModal("userProfile")}} size={32} style={{padding: "15px", cursor: "pointer", right: "0", top: "0", margin: "unset", position: "fixed"}} />
+                <>
+                    <Modal open={openModal}>
+                        <Icon name='west' onClick={() => {setModal("userProfile")}} size={32} style={{padding: "15px", cursor: "pointer", right: "50px", top: "0", margin: "unset", position: "fixed"}} />
+                        <Icon name='close' onClick={() => {setOpenModal(!openModal); setModal("userProfile")}} size={32} style={{padding: "15px", cursor: "pointer", right: "0", top: "0", margin: "unset", position: "fixed"}} />
+                        
+                        <ModalAboutSection>
+                            <ModalAboutNameSection style={{userSelect: "none"}}>
+                                <ModalNameSection>
+                                    <ModalUserDisplayName>My Account</ModalUserDisplayName>
+                                </ModalNameSection>
+                                <small>Profile <Icon size={12} color='var(--primary2-color)' name='east' /> My Account</small>
+                            </ModalAboutNameSection>
+                        </ModalAboutSection>
+
+                        <ModalMyAccountAvatar>
+                            <img style={{width: "128px", borderRadius: "50%"}} src="https://wallpapers.com/images/featured/cool-profile-picture-87h46gcobjl5e4xu.jpg" alt="" />
+                        </ModalMyAccountAvatar>
+
+                        <Division style={{position: "absolute", width: "100%", right: "0", marginTop: "30px"}} variant='second' />
                     
-                    <ModalAboutSection>
-                        <ModalAboutNameSection style={{userSelect: "none"}}>
-                            <ModalNameSection>
-                                <ModalUserDisplayName>My Account</ModalUserDisplayName>
-                            </ModalNameSection>
-                            <small>Profile <Icon size={12} color='var(--primary2-color)' name='east' /> My Account</small>
-                        </ModalAboutNameSection>
-                    </ModalAboutSection>
+                        <ModalUserButtonsBox>
+                            <li><Icon name='account_circle' /> <span>Name</span> <b>Cavid Xakin</b></li>
+                            <li><Icon name='alternate_email' /> <span>Username</span> <b>@cavidxakin</b></li>
+                        </ModalUserButtonsBox>
+                    </Modal>
+                </>
+            )}
 
-                    <ModalMyAccountAvatar>
-                        <img style={{width: "128px", borderRadius: "50%"}} src="https://wallpapers.com/images/featured/cool-profile-picture-87h46gcobjl5e4xu.jpg" alt="" />
-                    </ModalMyAccountAvatar>
+            {/* SETTINGS MODAL */}
+            {modal == "userSettings" && (
+                <>
+                    <Modal open={openModal}>
+                        <Icon name='west' onClick={() => {setModal("userProfile")}} size={32} style={{padding: "15px", cursor: "pointer", right: "50px", top: "0", margin: "unset", position: "fixed"}} />
+                        <Icon name='close' onClick={() => {setOpenModal(!openModal); setModal("userProfile")}} size={32} style={{padding: "15px", cursor: "pointer", right: "0", top: "0", margin: "unset", position: "fixed"}} />
+                        
+                        <ModalAboutSection>
+                            <ModalAboutNameSection style={{userSelect: "none"}}>
+                                <ModalNameSection>
+                                    <ModalUserDisplayName>Settings</ModalUserDisplayName>
+                                </ModalNameSection>
+                                <small>Profile <Icon size={12} color='var(--primary2-color)' name='east' /> Settings</small>
+                            </ModalAboutNameSection>
+                        </ModalAboutSection>
 
-                    <Division style={{position: "absolute", width: "100%", right: "0", marginTop: "30px"}} variant='second' />
-                
-                    <ModalUserButtonsBox>
-                        <li><Icon name='account_circle' /> <span>Name</span> <b>Cavid Xakin</b></li>
-                        <li><Icon name='alternate_email' /> <span>Username</span> <b>@cavidxakin</b></li>
-                    </ModalUserButtonsBox>
-                </Modal>
+                        <Division style={{position: "absolute", width: "100%", right: "0", marginTop: "30px"}} variant='second' />
+                    
+                        <ModalUserButtonsBox>
+                            <ModalSectionName>Privacy</ModalSectionName>
+                            <li><Icon name='cruelty_free' /> <span>Test</span> <b><Switch /></b></li>
+                            <li><Icon name='cruelty_free' /> <span>Test</span> <b><Switch /></b></li>
+                        </ModalUserButtonsBox>
+                    </Modal>
+                </>
             )}
 
             <SidePanelElement>

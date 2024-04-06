@@ -57,6 +57,7 @@ font-size: 24px;
 margin-left: 20px;
 color: #51FF3C;
 opacity: 0.5;
+user-select: text;
 `
 
 const WalletLogsItemPriceSend = styled.span`
