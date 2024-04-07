@@ -1,2 +1,2 @@
 # frontend
-Super easiest Wallet, P2P Marketplace &amp; Secure Messanger
+Super easiest Wallet, P2P Marketplace &amp; Secure Messenger
